@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Completed Do Its</title>
+</head>
+<body>
+{% extends 'doit/base.html' %}
+{% block content %}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h1>Completed Do Its</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {% for doit in doits %}
+                    <a href="{% url 'viewdoit' doit.id %}" class="list-group-item list-group-item-action{% if doit.important %} list-group-item-danger{% endif %}"><b>{{ doit.title }}</b> - Completed {{ doit.datecompleted|date:'M j Y H:i' }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
